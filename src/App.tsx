@@ -1,8 +1,12 @@
 import React from 'react';
 
+import ExperienceBar from './components/ExperienceBar'
+
 function App() {
   return (
-    <h1>Hello NLW</h1>
+   <div className='container'>
+     <ExperienceBar />
+   </div>
   );
 }
 

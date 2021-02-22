@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // import { Container } from './styles';
 
 const ExperienceBar: React.FC = () => {
+  const maxXP = 600;
+  const minXP = 0;
+  const currentXP = 550;
+
+  const [percentXP, setPercentXP] = useState('')
+
+  useEffect(() => {
+    let percent = 0;
+
+    percent = Math.round(100 * currentXP / maxXP);
+    setPercentXP(`${percent}%`)
+  }, [])
+
   return (
     <header className="experience-bar" >
-      <span>0 xp</span>
+      <span>{minXP} xp</span>
       <div>
-        <div style={{width: '50%'}} />
-        <span className="current-experience" style={{left: '50%'}}>
-          300 xp
+        <div style={{width: `${percentXP}`}} />
+        <span className="current-experience" style={{left: `${percentXP}`}}>
+          {currentXP} xp
         </span>
       </div>
-      <span>600 xp</span>
+      <span>{maxXP} xp</span>
     </header>
   );
 }

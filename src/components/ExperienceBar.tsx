@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-// import { Container } from './styles';
+import styles from '../styles/components/ExperienceBar.module.css'
 
 const ExperienceBar: React.FC = () => {
   const maxXP = 600;
@@ -17,11 +17,11 @@ const ExperienceBar: React.FC = () => {
   }, [])
 
   return (
-    <header className="experience-bar" >
+    <header className={styles.experienceBar} >
       <span>{minXP} xp</span>
       <div>
         <div style={{width: `${percentXP}`}} />
-        <span className="current-experience" style={{left: `${percentXP}`}}>
+        <span className={styles.currentExperience} style={{left: `${percentXP}`}}>
           {currentXP} xp
         </span>
       </div>

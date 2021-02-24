@@ -5,7 +5,7 @@ import styles from '../styles/components/ExperienceBar.module.css'
 const ExperienceBar: React.FC = () => {
   const maxXP = 600;
   const minXP = 0;
-  const currentXP = 350;
+  const currentXP = 300;
 
   const [percentXP, setPercentXP] = useState('')
 

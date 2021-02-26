@@ -95,7 +95,7 @@
   transition: filter 0.2s;
 }
 
-.challengeActive footer button.challengeFaillButton {
+.challengeActive footer button.challengeFailedButton {
   background: var(--red);
 }
 

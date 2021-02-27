@@ -3,6 +3,9 @@ import Cookies from 'js-cookie'
 
 interface ChallengedProviderProps {
   children: ReactNode;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
 }
 
 interface Challenge {
@@ -27,10 +30,14 @@ import challenges from '../../challenges.json'
 
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
-export function ChallengedProvider({children}: ChallengedProviderProps) {
-  const [level, setLevel] = useState(1)
-  const [currentExperience, setCurrentExperience] = useState(0)
-  const [challengeCompleted, setChallengeCompleted] = useState(0)
+export function ChallengedProvider({
+  children,
+  ...rest
+}: ChallengedProviderProps) {
+
+  const [level, setLevel] = useState(rest.level ?? 1)
+  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
+  const [challengeCompleted, setChallengeCompleted] = useState(rest.challengesCompleted ?? 0)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
 
@@ -44,7 +51,7 @@ export function ChallengedProvider({children}: ChallengedProviderProps) {
     Cookies.set('level', String(level))
     Cookies.set('currentExperience', String(currentExperience))
     Cookies.set('challengeCompleted', String(challengeCompleted))
-    
+
   }, [level, currentExperience, challengeCompleted])
 
   function levelUp() {

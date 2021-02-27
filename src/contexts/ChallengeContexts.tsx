@@ -17,7 +17,7 @@ interface Challenge {
 interface ChallengesContextData {
   level: number;
   currentExperience: number;
-  challengeCompleted: number;
+  challengesCompleted: number;
   experienceToNextLevel: number;
   activeChallenge: Challenge;
   levelUp: () => void;
@@ -37,7 +37,7 @@ export function ChallengedProvider({
 
   const [level, setLevel] = useState(rest.level ?? 1)
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
-  const [challengeCompleted, setChallengeCompleted] = useState(rest.challengesCompleted ?? 0)
+  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
 
@@ -50,9 +50,9 @@ export function ChallengedProvider({
   useEffect(() => {
     Cookies.set('level', String(level))
     Cookies.set('currentExperience', String(currentExperience))
-    Cookies.set('challengeCompleted', String(challengeCompleted))
+    Cookies.set('challengesCompleted', String(challengesCompleted))
 
-  }, [level, currentExperience, challengeCompleted])
+  }, [level, currentExperience, challengesCompleted])
 
   function levelUp() {
     setLevel(level+1)
@@ -89,7 +89,7 @@ export function ChallengedProvider({
     }
     setCurrentExperience(finalExperience)
     setActiveChallenge(null)
-    setChallengeCompleted(challengeCompleted+1)
+    setChallengesCompleted(challengesCompleted+1)
   }
 
   return (
@@ -98,7 +98,7 @@ export function ChallengedProvider({
       currentExperience,
       experienceToNextLevel,
       activeChallenge,
-      challengeCompleted,
+      challengesCompleted,
       levelUp,
       startNewChallenge,
       resetChallenge,

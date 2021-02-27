@@ -15,7 +15,7 @@ const ExperienceBar: React.FC = () => {
 
     percent = Math.round(100 * currentExperience / experienceToNextLevel);
     setPercentXP(`${percent}%`)
-  }, [])
+  }, [currentExperience, experienceToNextLevel])
 
   return (
     <header className={styles.experienceBar} >
